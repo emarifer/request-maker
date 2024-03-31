@@ -2,6 +2,9 @@
 <interface>
   <requires lib="gtk" version="4.0"/>
   <object class="GtkApplicationWindow" id="win">
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <property name="title">Request Maker</property>
     <child>
       <object class="GtkBox">
         <property name="orientation">vertical</property>
