@@ -1,5 +1,8 @@
+mod components;
+
 use std::collections::HashMap;
 
+use components::rowheader::RowHeader;
 use gtk4::{
     prelude::*, Application, ApplicationWindow, Box, Button, DropDown, Entry, ListBox, StringObject,
 };
@@ -41,7 +44,7 @@ fn mock_map() -> HashMap<String, String> {
     map
 }
 
-fn create_row(header_name: &str, header_value: &str) -> Box {
+/* fn create_row(header_name: &str, header_value: &str) -> Box {
     let entry_name = Entry::builder().text(header_name).build();
     let entry_value = Entry::builder().text(header_value).build();
 
@@ -57,12 +60,13 @@ fn create_row(header_name: &str, header_value: &str) -> Box {
     entry_box.append(&entry_value);
 
     entry_box
-}
+} */
 
 fn populate_list(list_box: &ListBox, map: &HashMap<String, String>) {
     for (name, value) in map.iter() {
-        let entry_box = create_row(&name, &value);
-        list_box.append(&entry_box);
+        // let entry_box = create_row(&name, &value);
+        let rowheader = RowHeader::new(&name, &value);
+        list_box.append(&rowheader);
     }
 }
 
@@ -73,7 +77,7 @@ fn main() -> glib::ExitCode {
 
     app.connect_activate(|app| {
         sourceview5::init();
-        let ui_src = include_str!("../ui/prototype.ui");
+        let ui_src = include_str!("../data/ui/prototype.ui");
         let builder = gtk4::Builder::from_string(ui_src);
 
         let request_method = builder.object::<DropDown>("method").unwrap();
