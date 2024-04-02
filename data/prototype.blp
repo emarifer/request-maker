@@ -4,17 +4,42 @@ using GtkSource 5;
 template $RequestMakerWindow: ApplicationWindow {
   default-width: 800;
   default-height: 600;
-  title: 'Request Maker';
+
+  [titlebar]
+  HeaderBar {
+    [start]
+    MenuButton {
+      label: _("Open");
+      tooltip-text: _("UNDER CONSTRUCTION");
+    }
+
+    [title]
+    Label {
+      use-markup: true;
+      label: "<b>Request Maker</b>";
+    }
+
+    [end]
+    MenuButton {
+      icon-name: "open-menu-symbolic";
+      tooltip-text: _("UNDER CONSTRUCTION");
+      primary: true;
+    }
+  }
 
   Box {
     orientation: vertical;
+    spacing: 6;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
 
     Box {
-      spacing: 10;
-      margin-start: 10;
-      margin-end: 10;
-      margin-top: 10;
-      margin-bottom: 10;
+      orientation: horizontal;
+      spacing: 6;
+      margin-start: 6;
+      margin-end: 6;
 
       DropDown method {
         model: StringList {
@@ -31,7 +56,7 @@ template $RequestMakerWindow: ApplicationWindow {
 
       Entry url {
         hexpand: true;
-        text: 'https://www.google.com';
+        text: 'https://www.example.com';
       }
 
       Button send {
