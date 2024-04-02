@@ -1,7 +1,7 @@
 using Gtk 4.0;
 using GtkSource 5;
 
-ApplicationWindow win {
+template $RequestMakerWindow: ApplicationWindow {
   default-width: 800;
   default-height: 600;
   title: 'Request Maker';
@@ -18,7 +18,14 @@ ApplicationWindow win {
 
       DropDown method {
         model: StringList {
-          strings ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+          strings [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE",
+            "OPTIONS"
+          ]
         };
       }
 
@@ -28,6 +35,7 @@ ApplicationWindow win {
       }
 
       Button send {
+        clicked => $on_request_send() swapped;
         label: 'Enviar';
       }
     }
