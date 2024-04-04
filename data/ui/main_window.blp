@@ -61,7 +61,7 @@ template $RequestMakerWindow: ApplicationWindow {
 
       Button send {
         clicked => $on_request_send() swapped;
-        label: 'Enviar';
+        label: _("Send");
       }
     }
 
@@ -73,7 +73,7 @@ template $RequestMakerWindow: ApplicationWindow {
       Notebook {
         NotebookPage {
           tab: Label {
-            label: 'Headers';
+            label: _("Headers");
           };
 
           child: ScrolledWindow {
@@ -88,7 +88,7 @@ template $RequestMakerWindow: ApplicationWindow {
 
         NotebookPage {
           tab: Label {
-            label: 'Body';
+            label: _("Body");
           };
 
           child: ScrolledWindow {
@@ -117,7 +117,7 @@ template $RequestMakerWindow: ApplicationWindow {
       Notebook {
         NotebookPage {
           tab: Label {
-            label: 'Headers';
+            label: _("Headers");
           };
 
           child: ScrolledWindow {
@@ -132,7 +132,7 @@ template $RequestMakerWindow: ApplicationWindow {
 
         NotebookPage {
           tab: Label {
-            label: 'Body';
+            label: _("Body");
           };
 
           child: ScrolledWindow {

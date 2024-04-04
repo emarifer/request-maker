@@ -2,7 +2,7 @@ use glib::{subclass::InitializingObject, GString};
 use gtk4::{prelude::*, subclass::prelude::*, Box, CompositeTemplate, Entry};
 
 #[derive(CompositeTemplate, Default)]
-#[template(file = "../../data/ui/rowheader.ui")]
+#[template(resource = "/com/emarifer/request-maker/http_header_row.ui")]
 pub struct RowHeaderImpl {
     #[template_child]
     pub entry_key: TemplateChild<Entry>,

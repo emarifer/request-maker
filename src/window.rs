@@ -7,16 +7,16 @@ use gtk4::{
 
 use std::collections::HashMap;
 
-use crate::{application::RequestMakerApplication, components::rowheader::RowHeader};
+use crate::{
+    application::RequestMakerApplication, components::rowheader::RowHeader, config::VERSION,
+};
 
 fn mock_map() -> HashMap<String, String> {
+    let user_agent = format!("request-maker/{}", VERSION);
     let mut map = HashMap::new();
 
     map.insert(String::from("Accept"), String::from("text/html"));
-    map.insert(
-        String::from("User-Agent"),
-        String::from("request-maker/1.0"),
-    );
+    map.insert(String::from("User-Agent"), String::from(user_agent));
     map.insert(String::from("Accept-Encoding"), String::from("bzig"));
 
     map
@@ -45,7 +45,7 @@ mod imp {
     use super::{mock_map, populate_list};
 
     #[derive(Default, CompositeTemplate)]
-    #[template(file = "../data/ui/prototype.ui")]
+    #[template(resource = "/com/emarifer/request-maker/main_window.ui")]
     pub struct RequestMakerWindow {
         #[template_child(id = "method")]
         pub request_method: TemplateChild<DropDown>,

@@ -1,18 +1,18 @@
 use glib::Object;
 use gtk4::gio;
 
+use crate::config::APP_ID;
 use crate::window::RequestMakerWindow;
 
 mod imp {
     use glib::subclass::{object::ObjectImpl, types::ObjectSubclass};
     use gtk4::{
         prelude::GtkWindowExt,
-        subclass::{
-            application::GtkApplicationImpl,
-            prelude::{ApplicationImpl, ObjectSubclassExt},
-        },
-        Application,
+        subclass::{application::GtkApplicationImpl, prelude::*},
+        Application, Window,
     };
+
+    use super::*;
 
     #[derive(Default)]
     pub struct RequestMakerApplication;
@@ -28,7 +28,13 @@ mod imp {
 
     impl ApplicationImpl for RequestMakerApplication {
         fn activate(&self) {
+            self.parent_activate();
             self.obj().get_windodw().present();
+        }
+
+        fn startup(&self) {
+            self.parent_startup();
+            Window::set_default_icon_name(APP_ID);
         }
     }
 
@@ -43,9 +49,7 @@ glib::wrapper! {
 
 impl RequestMakerApplication {
     pub fn new() -> Self {
-        Object::builder()
-            .property("application-id", "com.emarifer.request-maker")
-            .build()
+        Object::builder().property("application-id", APP_ID).build()
     }
 
     pub fn get_windodw(&self) -> RequestMakerWindow {
