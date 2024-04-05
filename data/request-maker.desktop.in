@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=request-maker
+Name=Request Maker
 Comment=HTTP request maker and APIs tester.
 Type=Application
 Exec=request-maker

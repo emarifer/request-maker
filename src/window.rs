@@ -8,7 +8,10 @@ use gtk4::{
 use std::collections::HashMap;
 
 use crate::{
-    application::RequestMakerApplication, components::rowheader::RowHeader, config::VERSION,
+    application::RequestMakerApplication,
+    // client::{Request, RequestMethod},
+    components::rowheader::RowHeader,
+    config::VERSION,
 };
 
 fn mock_map() -> HashMap<String, String> {
@@ -31,6 +34,8 @@ fn populate_list(list_box: &ListBox, map: &HashMap<String, String>) {
 }
 
 mod imp {
+    use std::{collections::HashMap, io::Read};
+
     use glib::subclass::{
         object::{ObjectImpl, ObjectImplExt},
         types::{ObjectSubclass, ObjectSubclassExt},
@@ -41,6 +46,9 @@ mod imp {
         template_callbacks, ApplicationWindow, Button, CompositeTemplate, DropDown, Entry, ListBox,
         TemplateChild,
     };
+    use isahc::RequestExt;
+
+    use crate::client::{build_request, Request, RequestMethod};
 
     use super::{mock_map, populate_list};
 
@@ -68,12 +76,51 @@ mod imp {
         #[template_callback]
         fn on_request_send(&self /* , _: &Button */) {
             let obj = &self.obj();
-            let method = obj.request_method();
             let url = obj.request_url();
             let body = obj.request_body();
+            let method = {
+                let str = String::from(obj.request_method());
+                RequestMethod::try_from(str.as_str())
+            };
 
-            println!("{} {}", method, url);
-            println!("{}", body)
+            let request = match method {
+                Ok(method) => {
+                    let request = Request {
+                        url: String::from(url),
+                        method,
+                        body: String::from(body),
+                        headers: HashMap::new(),
+                    };
+
+                    // println!("{:#?}", request);
+                    build_request(&request)
+                }
+                Err(_) => {
+                    println!("Error: invalid method");
+                    return;
+                }
+            };
+
+            let response = match request {
+                Ok(req) => req.send(),
+                Err(_) => {
+                    println!("Error: invalid request");
+                    return;
+                }
+            };
+
+            match response {
+                Err(_) => {
+                    println!("Error: invalid response");
+                    return;
+                }
+                Ok(mut rsp) => {
+                    let mut body_content = String::new();
+                    let _ = rsp.body_mut().read_to_string(&mut body_content);
+                    println!("{:#?}", rsp);
+                    println!("{}", body_content);
+                }
+            }
         }
     }
 

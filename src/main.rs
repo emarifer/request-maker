@@ -1,4 +1,5 @@
 mod application;
+mod client;
 mod components;
 #[rustfmt::skip]
 mod config;
