@@ -48,7 +48,10 @@ mod imp {
     };
     use isahc::RequestExt;
 
-    use crate::client::{build_request, Request, RequestMethod};
+    use crate::{
+        client::{build_request, Request, RequestMethod},
+        components::response_panel::ResponsePanel,
+    };
 
     use super::{mock_map, populate_list};
 
@@ -69,6 +72,9 @@ mod imp {
 
         #[template_child]
         pub request_body: TemplateChild<sourceview5::View>,
+
+        #[template_child]
+        pub response: TemplateChild<ResponsePanel>,
     }
 
     #[template_callbacks]
