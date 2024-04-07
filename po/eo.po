@@ -1,16 +1,16 @@
-# Esperanto translations for cartero package.
-# Copyright (C) 2024 THE cartero'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the cartero package.
-# Automatically generated, 2024.
+# Esperanto translations for request-maker package.
+# Copyright (C) 2024 THE request-maker'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the request-maker package.
+# Enrique <enriquemarin_sierra@hotmail.com>, 2024.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: request-maker\n"
+"Project-Id-Version: request-maker VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/emarifer/request-maker/issues\n"
-"POT-Creation-Date: 2024-04-01 00:07-0300\n"
-"PO-Revision-Date: 2024-03-28 18:09+0100\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"POT-Creation-Date: 2024-04-07 19:36+0200\n"
+"PO-Revision-Date: 2024-04-07 19:46+0200\n"
+"Last-Translator: Enrique <enriquemarin_sierra@hotmail.com>\n"
+"Language-Team: Esperanto <translation-team-eo@lists.sourceforge.net>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ASCII\n"
@@ -23,7 +23,7 @@ msgstr "Malfermu"
 
 #: data/ui/main_window.blp:13 data/ui/main_window.blp:25
 msgid "UNDER CONSTRUCTION"
-msgstr "EN KONSTRUO"
+msgstr "FARATA LABORO"
 
 #: data/ui/main_window.blp:64
 msgid "Send"

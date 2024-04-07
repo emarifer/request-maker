@@ -14,7 +14,7 @@ template $RequestMakerResponsePanel: Box {
         };
 
         child: Label {
-          label: "UNDER CONSTRUCTION";
+          label: _("UNDER CONSTRUCTION");
         };
 
         // child: ScrolledWindow {
@@ -35,12 +35,12 @@ template $RequestMakerResponsePanel: Box {
         child: ScrolledWindow {
           hexpand: true;
           vexpand: true;
-          width-request: 480;
 
           GtkSource.View response_body {
             auto-indent: true;
             indent-width: 2;
             show-line-numbers: true;
+            smart-backspace: true;
             top-margin: 10;
             bottom-margin: 10;
             left-margin: 10;
@@ -71,13 +71,3 @@ template $RequestMakerResponsePanel: Box {
     }
   }
 }
-
-/* ******* styles *******
-.result-info {
-  margin-top: 10px;
-  margin-right: 10px;
-}
-
-.text-success {
-  color: @success_color;
-} */
