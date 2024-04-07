@@ -80,7 +80,7 @@ mod imp {
     #[template_callbacks]
     impl RequestMakerWindow {
         #[template_callback]
-        fn on_request_send(&self /* , _: &Button */) {
+        fn on_send_request(&self /* , _: &Button */) {
             let obj = &self.obj();
             let url = obj.request_url();
             let body = obj.request_body();
