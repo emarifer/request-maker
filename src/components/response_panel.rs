@@ -27,7 +27,7 @@ mod imp {
         pub duration: TemplateChild<Label>,
 
         #[template_child]
-         pub response_size: TemplateChild<Label>,
+        pub response_size: TemplateChild<Label>,
     }
 
     // The central trait for subclassing a GObject
