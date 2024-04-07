@@ -2,74 +2,75 @@ using Gtk 4.0;
 using GtkSource 5;
 
 template $RequestMakerResponsePanel: Box {
-    Overlay {
-        hexpand: true;
-        vexpand: true;
 
-        [overlay]
-        Notebook {
-            NotebookPage {
-                tab: Label {
-                    label: _("Headers");
-                };
+  Overlay {
+    hexpand: true;
+    vexpand: true;
 
-                child: Label {
-                    label: "UNDER CONSTRUCTION";
-                };
+    [overlay]
+    Notebook {
+      NotebookPage {
+        tab: Label {
+          label: _("Headers");
+        };
 
-                // child: ScrolledWindow {
-                //     hexpand: true;
-                //     vexpand: true;
-                //     // PLACE WHAT APPROPRIATE HERE WHEN IT IS FINISHED
-                //     ListBox response_headers {
-                //         selection-mode: none;
-                //     }
-                // };
-            }
+        child: Label {
+          label: "UNDER CONSTRUCTION";
+        };
 
-            NotebookPage {
-                tab: Label {
-                    label: _("Body");
-                };
+        // child: ScrolledWindow {
+        //     hexpand: true;
+        //     vexpand: true;
+        //     // PLACE WHAT APPROPRIATE HERE WHEN IT IS FINISHED
+        //     ListBox response_headers {
+        //         selection-mode: none;
+        //     }
+        // };
+      }
 
-                child: ScrolledWindow {
-                    hexpand: true;
-                    vexpand: true;
-                    width-request: 480;
+      NotebookPage {
+        tab: Label {
+          label: _("Body");
+        };
 
-                    GtkSource.View response_body {
-                        auto-indent: true;
-                        indent-width: 2;
-                        show-line-numbers: true;
-                        top-margin: 10;
-                        bottom-margin: 10;
-                        left-margin: 10;
-                        right-margin: 10;
-                        monospace: true;
+        child: ScrolledWindow {
+          hexpand: true;
+          vexpand: true;
+          width-request: 480;
 
-                        buffer: GtkSource.Buffer {
-                            text: '{"hello": "world"}';
-                        };
-                    }
-                };
-            }
-        }
+          GtkSource.View response_body {
+            auto-indent: true;
+            indent-width: 2;
+            show-line-numbers: true;
+            top-margin: 10;
+            bottom-margin: 10;
+            left-margin: 10;
+            right-margin: 10;
+            monospace: true;
 
-        [overlay]
-        Box response_meta {
-            halign: end;
-            valign: start;
-            margin-top: 10;
-            margin-end: 10;
-            spacing: 13;
-
-            Label status_code {}
-
-            Label duration {}
-
-            Label response_size {}
-        }
+            buffer: GtkSource.Buffer {
+              text: '{"hello": "world"}';
+            };
+          }
+        };
+      }
     }
+
+    [overlay]
+    Box response_meta {
+      halign: end;
+      valign: start;
+      margin-top: 10;
+      margin-end: 10;
+      spacing: 13;
+
+      Label status_code {}
+
+      Label duration {}
+
+      Label response_size {}
+    }
+  }
 }
 
 /* ******* styles *******
