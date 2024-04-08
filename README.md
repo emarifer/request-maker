@@ -46,7 +46,12 @@ flatpak-builder --user --install flatpak_app build-aux/com.emarifer.RequestMaker
 ```
 
 You will find `Request Maker` in your application launcher, or you can launch it with
-`flatpak run com.emarifer.RequestMaker.json`.
+`flatpak run com.emarifer.RequestMaker`.
+
+Likewise, you can uninstall the application by running `flatpak uninstall --user com.emarifer.RequestMaker`. In any case, the complete uninstallation of the application requires deleting the `flatpak_app/` and `.flatpak-builder/` folders generated in the current folder when installing.
+
+>[!NOTE]
+>It may be necessary to install `flatpak builder` on your system by running `sudo apt install flatpak-builder`.
 
 ## Licenses
 
