@@ -9,7 +9,7 @@ project(
 i18n = import('i18n')
 gnome = import('gnome')
 
-base_id = 'com.emarifer.request-maker'
+base_id = 'com.emarifer.RequestMaker'
 
 dependency('glib-2.0', version: '>= 2.72')
 dependency('gtk4', version: '>= 4.6')
