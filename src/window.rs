@@ -19,7 +19,7 @@ fn mock_map() -> HashMap<String, String> {
     let mut map = HashMap::new();
 
     map.insert(String::from("Accept"), String::from("text/html"));
-    map.insert(String::from("User-Agent"), String::from(user_agent));
+    map.insert(String::from("User-Agent"), user_agent);
     map.insert(String::from("Accept-Encoding"), String::from("bzig"));
 
     map
@@ -28,7 +28,7 @@ fn mock_map() -> HashMap<String, String> {
 fn populate_list(list_box: &ListBox, map: &HashMap<String, String>) {
     for (name, value) in map.iter() {
         // let entry_box = create_row(&name, &value);
-        let rowheader = RowHeader::new(&name, &value);
+        let rowheader = RowHeader::new(name, value);
         list_box.append(&rowheader);
     }
 }
@@ -118,7 +118,6 @@ mod imp {
             match response {
                 Err(_) => {
                     println!("Error: invalid response");
-                    return;
                 }
                 Ok(mut rsp) => {
                     let mut body_content = String::new();

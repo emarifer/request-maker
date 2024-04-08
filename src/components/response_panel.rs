@@ -71,16 +71,14 @@ glib::wrapper! {
         @implements gtk4::Accessible, gtk4::Buildable, gtk4::ConstraintTarget, gtk4::Orientable;
 }
 
+impl Default for ResponsePanel {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl ResponsePanel {
     pub fn new() -> Self {
         Object::builder().build()
     }
 }
-
-/*
-glib::wrapper! {
-    pub struct ResponsePanel(ObjectSubclass<imp::ResponsePanel>)
-        @extends gtk4::Widget, gtk4::Overlay,
-        @implements gtk4::Accessible, gtk4::Buildable, gtk4::ConstraintTarget;
-}
-*/

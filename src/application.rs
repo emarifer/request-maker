@@ -47,12 +47,18 @@ glib::wrapper! {
         @implements gio::ActionMap, gio::ActionGroup;
 }
 
+impl Default for RequestMakerApplication {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl RequestMakerApplication {
     pub fn new() -> Self {
         Object::builder().property("application-id", APP_ID).build()
     }
 
     pub fn get_windodw(&self) -> RequestMakerWindow {
-        RequestMakerWindow::new(&self)
+        RequestMakerWindow::new(self)
     }
 }
