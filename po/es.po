@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: request-maker VERSION\n"
 "Report-Msgid-Bugs-To: https://github.com/emarifer/request-maker/issues\n"
-"POT-Creation-Date: 2024-04-07 19:36+0200\n"
-"PO-Revision-Date: 2024-04-07 19:47+0200\n"
+"POT-Creation-Date: 2024-04-11 09:20+0200\n"
+"PO-Revision-Date: 2024-04-11 09:31+0200\n"
 "Last-Translator: Enrique <enriquemarin_sierra@hotmail.com>\n"
 "Language-Team: Spanish <es@tp.org.es>\n"
 "Language: es\n"
@@ -22,6 +22,7 @@ msgid "Open"
 msgstr "Abrir"
 
 #: data/ui/main_window.blp:13 data/ui/main_window.blp:25
+#: data/ui/response_panel.blp:17
 msgid "UNDER CONSTRUCTION"
 msgstr "EN CONSTRUCCIÓN"
 
@@ -29,10 +30,26 @@ msgstr "EN CONSTRUCCIÓN"
 msgid "Send"
 msgstr "Enviar"
 
-#: data/ui/main_window.blp:87
+#: data/ui/main_window.blp:87 data/ui/response_panel.blp:13
 msgid "Headers"
 msgstr "Cabeceras"
 
-#: data/ui/main_window.blp:102
+#: data/ui/main_window.blp:113 data/ui/response_panel.blp:23
 msgid "Body"
 msgstr "Cuerpo"
+
+#: data/ui/request_header_pane.blp:16
+msgid "Add new header"
+msgstr "Agregar cabecera"
+
+#: data/ui/request_header_row.blp:17
+msgid "Name"
+msgstr "Nombre"
+
+#: data/ui/request_header_row.blp:23
+msgid "Value"
+msgstr "Valor"
+
+#: data/ui/request_header_row.blp:32
+msgid "Delete header"
+msgstr "Borrar cabecera"

@@ -1,0 +1,41 @@
+using Gtk 4.0;
+
+template $RequestMakerRequestHeaderRow: Gtk.Box {
+  spacing: 10;
+  margin_start: 10;
+  margin_end: 10;
+  margin_top: 5;
+  margin_bottom: 5;
+
+  Gtk.CheckButton active {
+    active: bind template.active bidirectional;
+  }
+
+  Gtk.Entry entry_key {
+    hexpand: true;
+    text: bind template.header-name bidirectional;
+    placeholder-text: _("Name");
+  }
+
+  Gtk.Entry entry_value {
+    hexpand: true;
+    text: bind template.header-value bidirectional;
+    placeholder-text: _("Value");
+  }
+
+  Gtk.Button delete {
+    styles [
+      "destructive-action"
+    ]
+
+    icon-name: "edit-delete-symbolic";
+    tooltip-text: _("Delete header");
+    clicked => $on_delete_request() swapped;
+  }
+}
+
+/* 
+Gtk.Entry entry_key {
+    text: bind template.header as <$RequestMakerHeader>.header-name;
+  }
+ */

@@ -15,6 +15,8 @@ dependency('glib-2.0', version: '>= 2.72')
 dependency('gtk4', version: '>= 4.6')
 dependency('gtksourceview-5', version: '>= 5.4')
 
+# glib_compile_resources = find_program
+
 glib_compile_resources = find_program('glib-compile-resources', required: true)
 cargo = find_program('cargo', required: true)
 
@@ -46,13 +48,19 @@ endif
 meson.add_dist_script(
   'build-aux/dist-vendor.sh',
   meson.project_build_root() / 'meson-dist' / meson.project_name() + '-' + version,
-  meson.project_source_root()
+  meson.project_source_root(),
 )
 
 if get_option('profile') == 'development'
   # Setup pre-commit hook for ensuring coding style is always consistent
   message('Setting up git pre-commit hook..')
-  run_command('cp', '-f', 'hooks/pre-commit.hook', '.git/hooks/pre-commit', check: false)
+  run_command(
+    'cp',
+    '-f',
+    'hooks/pre-commit.hook',
+    '.git/hooks/pre-commit',
+    check: false,
+  )
 endif
 
 subdir('data')

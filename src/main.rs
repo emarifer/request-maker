@@ -1,8 +1,9 @@
 mod application;
 mod client;
-mod components;
 #[rustfmt::skip]
 mod config;
+mod objects;
+mod widgets;
 mod window;
 
 use self::application::RequestMakerApplication;

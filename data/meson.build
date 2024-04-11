@@ -1,15 +1,21 @@
 subdir('icons')
 
 blueprint_files = [
-  'ui/http_header_row.blp',
   'ui/main_window.blp',
+  'ui/request_header_pane.blp',
+  'ui/request_header_row.blp',
   'ui/response_panel.blp',
 ]
 
+blueprint_targets = []
+foreach blp : blueprint_files
+  blueprint_targets += blp.replace('.blp', '.ui').split('/')[-1]
+endforeach
+
 blueprints = custom_target('blueprints',
   input: files(blueprint_files),
-  output: '.',
-  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTPUT@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
+  output: blueprint_targets,
+  command: [find_program('blueprint-compiler'), 'batch-compile', '@OUTDIR@', '@CURRENT_SOURCE_DIR@', '@INPUT@'],
 )
 
 resources = gnome.compile_resources(
@@ -25,8 +31,8 @@ resources = gnome.compile_resources(
 desktop_file = configure_file(
   input: 'request-maker.desktop.in',
   output: '@0@.desktop'.format(application_id),
-  configuration: { 'app_id': application_id },
-  install_dir: join_paths(get_option('datadir'), 'applications')
+  configuration: {'app_id': application_id},
+  install_dir: join_paths(get_option('datadir'), 'applications'),
 )
 
 desktop_utils = find_program('desktop-file-validate', required: true)

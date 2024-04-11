@@ -91,9 +91,20 @@ template $RequestMakerWindow: ApplicationWindow {
                 hexpand: true;
                 vexpand: true;
 
-                ListBox request_headers {
+                /* ListBox request_headers {
                   selection-mode: none;
                 }
+                ListView request_headers {
+                  factory: Gtk.BuilderListItemFactory {
+                    template ListItem {
+                      child: $RequestMakerRequestHeaderRow {
+                        header-name: bind template.item as <$RequestMakerHeader>.header-name;
+                        header-value: bind template.item as <$RequestMakerHeader>.header-value;
+                      };
+                    }
+                  };
+                } */
+                $RequestMakerRequestHeaderPane header_pane {}
               };
             }
 
